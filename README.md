@@ -13,13 +13,10 @@
 
 This contains Chocolatey packages, both manually and automatically maintained.
 
-You can choose to use one or both of the different methods currently supported in the Chocolatey community for automatic packaging. They are AU (Automatic Updater) and Ketarin/ChocolateyPackageUpdater.
-
 ### Folder Structure
 
-* automatic - where automatic packaging and packages are kept. These are packages that are automatically maintained using either [AU](https://chocolatey.org/packages/au) or [Ketarin](https://chocolatey.org/packages/ketarin)/[ChocolateyPackageUpdater](https://chocolatey.org/packages/chocolateypackageupdater) combo.
+* automatic - where automatic packaging and packages are kept. These are packages that are automatically maintained using [AU](https://chocolatey.org/packages/au).
 * icons - Where you keep icon files for the packages. This is done to reduce issues when packages themselves move around.
-* ketarin - where ketarin jobs (aka applications or searches) exported as XML are kept. This is done to allow ease of contribution.
 * manual - where packages that are not automatic are kept.
 * ops - scripts, jobs, and other items for ensuring automatic packaging.
 * setup - items for prepping the system to ensure for auto packaging.
@@ -29,13 +26,6 @@ For setting up your own automatic package repository, please see [Automatic Pack
 ### Requirements
 
 * Chocolatey (choco.exe)
-
-#### Ketarin / ChocolateyPackageUpdater
-
-* PowerShell v2+
-* [Ketarin](https://chocolatey.org/packages/ketarin)
-* [Chocolatey Package Updater](https://chocolatey.org/packages/chocolateypackageupdater)
-* A Windows box somewhere - to run the updater on - appveyor can't work until the import of the settings can be automated
 
 #### AU
 
@@ -50,7 +40,6 @@ For daily operations check out the AU packages [template README](https://github.
 1. Clone the repository locally.
 1. Head into the `setup` folder and perform the proper steps for your choice of setup (or both if you plan to use both methods).
 1. Edit this README. Update the badges at the top.
-
 
 ### Recommendation on Auto Packaging
 
@@ -71,7 +60,7 @@ You want to bring in all of your packages into the proper folders. We suggest us
  * `ops\*.*`
  * `setup\*.*`
  * `.appveyor.yml`
-1. Inspect the following file and add the differences:
+2. Inspect the following file and add the differences:
  * `.gitignore`
 
 ### Use Both Methodologies
