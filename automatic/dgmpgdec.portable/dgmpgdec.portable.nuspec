@@ -1,0 +1,827 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>dgmpgdec.portable</id>
+    <version>2.0.0.5</version>
+    <packageSourceUrl>https://github.com/rlaphoenix/chocolatey-packages</packageSourceUrl>
+    <owners>rlaphoenix</owners>
+    <title>DGMPGDec (Portable)</title>
+    <authors>Donald Graft</authors>
+    <projectUrl>http://rationalqm.us/dgmpgdec/dgmpgdec.html</projectUrl>
+    <iconUrl>https://rawcdn.githack.com/rlaphoenix/chocolatey-packages/a1a740d92336e005d07b5858fb1b502242b9e2f4/icons/dgmpgdec.portable.png</iconUrl>
+    <copyright>2021 Donald Graft</copyright>
+    <licenseUrl>http://rationalqm.us/dgmpgdec/DGIndexManual.html#License</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <projectSourceUrl>http://rationalqm.us/dgmpgdec/dgmpgdec2005src.rar</projectSourceUrl>
+    <docsUrl>http://rationalqm.us/dgmpgdec/DGIndexManual.html</docsUrl>
+    <mailingListUrl>http://rationalqm.us/board/index.php</mailingListUrl>
+    <bugTrackerUrl>http://rationalqm.us/board/index.php</bugTrackerUrl>
+    <tags>dgindex dgmpgdec dvd2avi mpeg2dec dgdecode dgvfapi</tags>
+    <summary>MPEG1/2 Decoder and Frame Server</summary>
+    <description>
+      DGMPGDec is a multi-project containing DGIndex, DGDecode, and DGVfapi.
+
+      DGIndex, part of the DGMPGDec package, is primarily designed to create an index of an MPEG video stream, containing the location of each frame in the input stream, and some additional information about each frame. This index, or project file, is used by the companion Avisynth filter DGDecode to provide frame-accurate serving of the video via an Avisynth script. DGIndex is able to decode and index most MPEG1/2 streams including elementary streams, program streams, VOBs, VCDs, SVCDs, PVA files, and transport streams. Additional features include: video demuxing (m1v/m2v), audio demuxing (ac3, dts, aac, mpa, and lpcm), optimized iDCTs, luminance filtering, cropping, and more. DGIndex is an evolution of Chia-chen Kuo's DVD2AVI and is baselined off DVD2AVI v1.77.3.
+
+      DGDecode and DGVfapi are AviSynth and VapourSynth frame-servers.
+    </description>
+    <releaseNotes>
+      --------------------------
+      DGMPGDec 2.0.00
+      Changes from version 1.5.8
+      --------------------------
+      1. Rebuilt with Visual Studio 2019.
+      2. A 64-bit executable of DGDecode is now included (derived from fork by Asd-g).
+      3. DGDecode now works with Avisynth 2.6 and Avisynth+.
+
+      --------------------------
+      DGMPGDec 1.5.8
+      Changes from version 1.5.7
+      --------------------------
+      1. Fixed a problem that caused DGIndex to crash with some pathological streams.
+
+      --------------------------
+      DGMPGDec 1.5.7
+      Changes from version 1.5.6
+      --------------------------
+      1. Fixed pitch problems in DGDecode postprocessing.
+      2. Added indexing progress reporting to stdout.
+
+      --------------------------
+      DGMPGDec 1.5.6
+      Changes from version 1.5.5
+      --------------------------
+      1. Added Unix-style CLI parsing. The legacy parsing is also supported. The new parsing
+      allows for commas and spaces within file name.
+      2. Revised the audio header emulation check to prevent it from rejecting some valid
+      audio.
+      3. Increased the timeout for finding transport packets from 3 to 5 seconds.
+      4. Properly ignore some program stream filler packets that do not specify the
+      correct packet length.
+      5. When a new transport stream is loaded without exiting DGIndex, the PIDs are now
+      re-determined (without requiring the user to reset them as was previously
+      the case).
+      6. Fixed a bug in which normalization was being used erroneously when demuxing
+      audio (could happen if you were decoding AC3 to WAV with Normalization enabled
+      and then you set the mode to demux audio without unchecking the Normalization
+      option).
+      7. Fixed a bug in the Cropping dialog such that the height field was not properly
+      set after changes were made.
+      8. Improved reliability of stream type detection upon file open.
+
+      --------------------------
+      DGMPGDec 1.5.5
+      Changes from version 1.5.4
+      --------------------------
+      1. Added an option to display HD full sized in DGIndex.
+      2. Fixed a bug in PAT/PMT parsing.
+      3. Modified the video demultiplexing so that any video data before the first sequence header
+      is discarded. This avoids creating demuxed streams that can't be opened by some applications.
+      Previously this could happen if the source stream had a bad cut at the beginning.
+
+      --------------------------
+      DGMPGDec 1.5.4
+      Changes from version 1.5.3
+      --------------------------
+      1. Added a File/Close menu option.
+      2. Added a Video/Copy frame to clipboard option.
+      3. Fixed a problem with video demultiplexing that caused frames to be lost at the start of
+      the stream.
+      4. Added a Sequence field to the Info dialog. It shows the state of the progressive_sequence flag.
+      Also modified the strings printed for Frame Type and Frame Struct. See the users manual for details.
+
+      --------------------------
+      DGMPGDec 1.5.3
+      Changes from version 1.5.2
+      --------------------------
+      1. Fixed an M2V demuxing bug that sometimes demuxed an extra partial first GOP copy.
+      2. Added mousewheel support.
+      3. Added -RG option for the CLI to allow setting the project range via the CLI.
+
+      --------------------------
+      DGMPGDec 1.5.2
+      Changes from version 1.5.1
+      --------------------------
+      1. Fixed another problem that caused some program streams to be detected as transport streams.
+
+      --------------------------
+      DGMPGDec 1.5.1
+      Changes from version 1.5.0
+      --------------------------
+      1. Fixed a problem that caused some program streams to be detected as transport streams.
+
+      --------------------------
+      DGMPGDec 1.5.0
+      Changes from version 1.4.9
+      --------------------------
+      1. Pop-up warning message boxes are now suppressed for CLI operation.
+      2. PSIP PID detection has been added.
+      3. PIDs are now displayed in decimal as well as hexadecimal.
+      4. A new option, Looped Playback, was added. When the end of the timeline is reached
+      during a Play or Preview operation, playback is automatically restarted at the beginning
+      of the timeline.
+      5. A bug was fixed in the transport packet length detection code. This caused some M2TS
+      streams to be parsed incorrectly.
+      6. The file type .m2t was added to the open dialog.
+      7. Some array sizes were increased to prevent crashes in the debugger.
+      8. The next_start_code() function was enhanced to add error resiliency for abnormal slice terminations.
+      9. Because the code never writes to the DirectDraw surface anymore (removed long ago!), the DirectDraw
+      Overlay option was removed. DGIndex now never seizes the overlay.
+      10. When the Use Full Paths option is turned off, relative paths are used. This allows for
+      the source files to be in a different directory than the D2V file. If they are in the same
+      directory, the behavior is the same as before.
+      11. In CLI mode, if a field order transition is detected, it is silently corrected.
+      12. Fixed two problems with .m2ts files: 1) audio on PRIVATE_STREAM_1 was not processed correctly,
+      and 2) video demuxing was broken.
+      13. Fixed a problem that resulted in an abort of processing with the message box popup
+      "Force film mode is not supported with frame repeats".
+      14. Added checks for extra robustness against emulated audio start codes for MPEG audio
+      in program streams. This fixes some known streams with emulated audio start codes.
+      15. The infamous GOP warning popup has been removed. The D2V Parse log now shows the
+      open/closed status of the GOPs, so if you need to know if your opening GOP is open, look there.
+      16. The Info dialog position is no longer pegged to the main DGIndex window. It can be independently
+      positioned and its position is saved and restored via the INI file. Also, its font size has been
+      decreased and all the group boxes are now arranged vertically.
+      17. An option was added to control how HD videos are displayed. You can now shrink by half
+      (the previous behavior) or you can view any quadrant of the video. This allows the interlace
+      structure of HD videos to be inspected.
+      18. Fixed a problem that caused DGIndex to miss some audio streams. For example, if AC3 substream
+      0x80 was present, and MPA stream 0xC0 was present, both would be viewed as Track 1, and only the
+      first one encountered would be detected. The concept of track number is removed
+      (as it is a DVD-specific construct), and it is replaced with the concept of audio id.
+      See the users manual for details.
+      19. For MPEG audio streams, the Info dialog now shows full information: audio id, layer,
+      number of channels, sampling rate, and bitrate. This information is also included in the
+      filename of demuxed MPEG audio streams.
+      20. Whenever the Info dialog is closed, a log file is (optionally) created that contains
+      the same information. This may be invoked by the CLI to silently query the nature of the
+      input file. Please see the users manual for details.
+      21. When a stream does not declare the colorimetry, matrix_coefficients=1 is assumed for
+      HD video and matrix_coefficients=5 is assumed for SD video.
+      22. Fixed a bug that caused automatic PID setting for transport streams to use the last
+      audio stream encountered instead of the first.
+      23. Use lowest numbered audio ID to expand __aud__ instead of the first audio stream encountered
+      in the source files.
+      24. Added an MRU list to the File menu.
+      25. Leading B frames for field structure streams were not counted correctly, causing a
+      possibility to display bad starting frames when serving with DGDecode. Fixed.
+      26. Fixed possible crashes when exiting DGIndex while a play/preview is in progress.
+      27. DGIndex optionally no longer beeps and brings its window to the foreground when a
+      Save Project operation is complete.
+      28. The quants displayed by DGDecode's showQ=true did not match the avg/min/max values
+      displayed for info=1 (the showQ display was not re-ordered for display order). Fixed.
+      29. Only half a screenful of values were shown with showQ=true for field structure streams.
+      30. The funny transparency for the showQ display was fixed.
+      31. The Info display now shows the picture coding type (I/P/B).
+      32. Added a maximum bitrate field to the Info display.
+      33. Demuxed MPEG audio files are now given the extension mp1/mp2/mp3 depending on the
+      audio layer. The old behavior can be enabled via an INI file option (see users manual).
+      34. Transport packet resync and M2TS file detection were made more robust.
+      35. Fixed a bug in the Log Timestamps function, whereby a video DTS value was incorrectly
+      shown as a PTS value.
+      36. Fixed a bug in demuxing of DTS audio from transport streams.
+      37. The aspect ratio field of the Info dialog now shows the raw value of the field
+      as well as the corresponding string.
+      38. The display size from a sequence_display_extension is now shown in the Info dialog.
+      This, together with the change above, allows the sample aspect ratio (SAR) to be inferred,
+      according to the MPEG2 specification.
+      39. A default path for saving BMPs can now be specified.
+      40. Fixed a bug whereby tracks selected for demuxing in the INI file were not actually
+      enabled for demuxing until the track selection dialog was saved. Now they are honored
+      on startup as they should be.
+      41. Fixed the CLI to also parse for the = sign at the end of the options to avoid false
+      option detection. E.g., the substring '-aif' anywhere in a file name would be parsed as an
+      option specification.
+      42. Other miscellaneous CLI parsing bugs fixed.
+      43. When doing a preview via the CLI, the playback speed is set to maximum.
+      44. When a Play/Preview/Save Project Operation begins, the focus is now left on the main
+      window. Previously, it annoyingly moved to the Info window.
+      45. Don't check for field order transitions for streams with only frame repeats.
+      46. Fix parsing with log timestamps enabled.
+      47. Correct handling of default matrix coefficients for hints.
+      48. Save BMP is now enabled during play/preview.
+      49. Fixed the audio delay calculation, timestamps dump, and analyze sync tool for streams
+      that do not contain GOP headers.
+      50. Fixed incorrect audio demuxing when demuxing audio only.
+      51. Fixed display of field order for field structure streams.
+      52. Fixed bug: Open file, Save Project, then File -> Open -> OK gives an error messge.
+      53. Fixed bug: Save project with decode AC3 to WAV. Repeat that. Each time the WAV file
+      becomes longer. The size was not reset to zero.
+
+      --------------------------
+      DGMPGDec 1.4.9
+      Changes from version 1.4.8
+      --------------------------
+      1. Made AC3 parsing more robust by making audio data less likely to erroneously
+      emulate a sync byte. Rare AC3 streams that couldn't be parsed are now handled correctly.
+      2. Changed the running time line at the bottom of the Parse D2V output so that it now
+      includes fractions of a second.
+      3. Added additional MPEG syntax error checking to improve the robustness and error recovery.
+      This fixes one reported stream that showed excessive macroblocking on one type of syntax
+      error due to corruption.
+      4. Fixed an error in random frame access in the presence of RFF flags.
+      5. Added the PCR for transport streams and the SCR for program streams to the
+      'Log Timestamps' dump.
+      6. DGIndex can now automatically set the PIDs on file open for streams that lack PAT/PMT
+      tables. If the PAT/PMT tables are absent, DGIndex falls back to using raw PID detection
+      and sets the first audio and video PIDs seen in the stream.
+      7. The __aud__ variable in the AVS template now uses the first audio track found
+      instead of the last.
+      8. 204-byte transport packets are now supported.
+      9. The info dialog now includes a stream type field.
+      10. If an exception occurs during processing, a message box pops up and allows the
+      user to choose to continue or to abort.
+      11. The D2V file version is bumped to 16.
+      12. The AVS template path now defaults to a file called "template.avs" in the same
+      directory as DGIndex.exe.
+      13. Fixed a bug in INI file loading that caused some parameters to be read incorrectly.
+      14. An error popup now appears if the user attempts to execute "Demux Audio Only" when
+      the audio method is set to "Decode AC3 Track to WAV".
+      15. Fixed a bug in relative path handling that crashed DGIndex when "Load Project" was performed.
+      16. Revised the track selection interface to be more user friendly.
+      17. Added support for frame repeats. These are increasingly being found in 720P streams.
+      18. Added two new fields to the info dialog: number of frame repeats, and number of field repeats.
+      19. The Correct Field Order option is removed and the field order correction function
+      is now available through the Tools menu.
+      20. A first attempt has been made to add a progress percentage field to the DGIndex
+      window title bar.
+      21. When in CLI mode, DGIndex no longer grabs the foreground focus and beeps at the
+      end of a Save Project operation.
+      22. Fixed a bug in the LumaYV12() filter (part of DGDecode) that could cause a
+      crash in some circumstances.
+      23. Adding checking for audio file names to not be already open in another application
+      before trying to demux to them.
+      24. Added a new tool in the Tools menu: Analyze Sync.
+      25. Revised the indexing code to support the case where an indexed unit (especially packs)
+      might contain more than one I frame. Previously random navigation in DGDecode failed for
+      this rare scenario.
+      26. Fixed a bug that caused DGIndex to sometimes use 601 colorimetry in the preview window
+      and when doing Save BMP when 709 should have been used. The Info Dialog was correct, however.
+      27. Added support for M2TS (Blueray Disk MPEG2) files.
+      28. The reporting of matrix coefficients was off by one GOP so if they changed,
+      one GOP would be reported wrongly. Fixed.
+      29. Multiple __vid__ and __aud__ per line are now supported in AVS template files.
+      30. Audio-only demuxing of LPCM audio was fixed.
+      31. Making a range that cuts from the start failed for some program streams. Fixed.
+      32. Added support for demuxing LPCM from M2TS (Blu-Ray) files. Note that the raw PCM
+      is demuxed (same as xport.exe). You must use an audio processor, such as sox.exe,
+      to repackage it as you want it (typically as a WAV file). Refer to the DGIndex Users Manual
+      for instructions in that regard (Audio/Output Method section). PID detection and the
+      Info dialog are supported for this new audio type. Thanks to drmpeg for showing the way
+      with xport.exe.
+      33. Added a warning pop-up to notify the user that a field order transition was detected.
+
+      --------------------------
+      DGMPGDec 1.4.8
+      Changes from version 1.4.7
+      --------------------------
+      1. For streams that specify 1088 as the vertical height for
+      both the encoded and display sizes, a pop-up appears once on file
+      loading (not done for CLI invocation) asking if the video should be
+      treated as if it has a height of 1080.
+      2. Completely rewrote the PAT/PMT parser. Syntactically, it now
+      a) correctly handles sections that cross transport packet boundaries,
+      or that start in the middle of a transport packet following a previous
+      section, b) correctly handles streams with multiple PAT sections, and
+      c) correctly handles streams that put all the program information on
+      one PMT PID. The parser is now fully correct syntactically. Semantically,
+      it now a) correctly labels private stream video, b) labels all scrambled
+      streams so that user can avoid crashing DGIndex by selecting a scrambled
+      stream, and c) properly distinguishes between AC3 audio streams and
+      Teletext streams.
+      3. When showing the film versus video percentage, DGIndex always now
+      shows film percentage if it is greater than or equal to 50%, or
+      video percentage if it is greater than 50%. Of course the sum is 100%.
+      4. Fixed a problem with playback speed control. E.g., if you are running
+      in slow motion and hit Pause, wait a while, and then hit Resume, the video
+      would go real fast for a while until it "caught up".
+      5. DGIndex now supports "Open With" operation. E.g., you can double click
+      a VOB file and have it open right up if your association is correct. Or you
+      have a shortcut to DGIndex on your desktop and then highlight a bunch of VOBs
+      and drop them all on the shortcut; they are opened in sorted order. (It always
+      irritated me that you couldn't do that.)
+      6. DGIndex can now automatically set the transport PIDs to the first program
+      when a stream is opened. This happens when a new file is opened with the PIDs
+      set to reserved (0x02). The PIDs are set to reserved when DGIndex is started,
+      so PID setting will happen when a transport stream file is opened after starting
+      DGIndex. Thereafter, the Set PIDs dialog is controlling.
+      7. A new option under the file menu was added: Demux Audio Only. This is
+      intended for demuxing the audio from streams that do not contain video.
+
+      --------------------------
+      DGMPGDec 1.4.7
+      Changes from version 1.4.6
+      --------------------------
+      1. This version allows the user to specify different AVS templates for AVS script
+      generation (or to disable AVS script generation).
+      2. Made transport stream detection more robust
+      3. The Parse D2V log now includes the running time of the video.
+      4. The quants log now includes the frame numbers at which the matrices appear.
+      5. Fixed garbage in file list caused when hitting the Up button with an empty list.
+      6. Added a new option called Use Full Paths. When enabled,
+      behavior is as it always has been. When disabled, only file
+      names (not full paths) are used as references in the D2V and
+      generated AVS files. This makes it easier to move project files.
+      This new option was contributed by Christian Eberl. Thank you, Chris!
+      7. Changed the exception handling in DGIndex. Previously an exception would abort
+      the entire preview or save project operation. Now only the current picture decoding
+      is aborted.
+      8. Added an option to enable/disable use of the DirectDraw overlay.
+      9. Added an option to dump the audio and video PTS/DTS timestamps.
+      10. DGIndex now supports demuxing DTS audio from transport streams.
+      11. Added an option to force proper parsing of audio when the stream
+      is not DVD-structured (i.e., when there is no audio substream number
+      and associated DVD header). For example, AC3 audio could not be processed
+      from MPG files captured by a FusionHDTV RT Gold 5 card.
+      12. Fixed problem that made it impossible to demux MPEG1 video from
+      transport streams.
+      13. Fixed a problem that caused a long delay before a play or preview
+      operation begins for some transport streams.
+      14. Fixed the issue of DGMPGDec using the coded picture size (always a
+      multiple of 16) instead of the stream declared display size. This caused
+      1080i streams to be treated as 1088i, for example.
+      15. Improved the Luminance and Cropping filters in DGIndex.
+      16. Corrections and addition to documentation.
+
+      --------------------------
+      DGMPGDec 1.4.6
+      Changes from version 1.4.5
+      --------------------------
+      1. Fixed a bug in indexing for some field structure streams.
+      2. The 'This I picture starts a new GOP' flag in the D2V file was not
+      being set correctly. This flag is not used by DGDecode, so the impact
+      was only to the diagnostics produced by Parse D2V.
+      3. The D2V file format version number was bumped to 12. (This should have
+      been done for version 1.4.5; better late than never.)
+      4. Fixed a problem in DGDecode that could cause a lockup when navigating
+      on the timeline with some unusual field structure streams.
+      5. Increased the maximum number of input files from 256 to 512.
+      6. Incorporated fix to DGVfapi (by 'tritical') that prevents a failure
+      when a large number of VFAPI-served files are opened at once.
+      7. Changed DGIndex/DGDecode so that when DGDecode sets the frame rate in
+      Avisynth, it uses the exact fractional representation for
+      fps_numerator/fps_denominator (changes by 'tritical').
+
+      This way, e.g., NTSC clips get the exact 24000/1001, 30000/1001,
+      or 60000/1001 rate instead of 23.976, 29.970, or 59.94.
+
+      DGIndex was actually getting the framerate correct, but when it wrote
+      the d2v file, it would multiply the floating point value up by 1000 and
+      then save it. Then DGDecode would use that value for the numerator and
+      1000 for the denominator. Now, when DGIndex gets the fps value from the
+      lookup table it also gets numerator/denominator values from a lookup table.
+      Then in the d2v file it writes, e.g.:
+
+      Frame_Rate=29970 (30000,1001)
+
+      with numerator and denominator in parentheses. DGDecode then uses those
+      values when setting the frame rate in Avisynth.
+
+      This change bumps the D2V file format version number to 13.
+      8. The message box that pops up for transport streams when no data is found
+      has been clarified to direct the user to use the Stream menu to set the PIDs.
+      9. Fixed a hang when the CLI -HIDE option is used and the input file cannot
+      be opened.
+      10. The video overlay is now not claimed when the -HIDE or -MINIMIZE
+      CLI options are used.
+      11. File version properties were added for DGIndex, DGDecode, and DGVfapi.
+      If you right click on the EXE, DLL, or VFP files and select properties,
+      you can now obtain file version information.
+      12. The DGIndex Information dialog now shows an overall average bitrate for
+      the entire previewed video in addition to the windowed value. The windowed value
+      now reports every 32 frames instead of every 64 frames.
+      13. DGVfapi's handling of audio from avisynth scripts was fixed. It didn't
+      set values for dwBlockAlign and dwReadedSampleCount, and it should be converting
+      the output to 16-bit integer if it isn't already in that format. Changes by
+      'tritical'.
+      14. The old "Fix D2V" tool is back in a new guise: the "Correct Field Order"
+      option. Refer to the manual for details.
+      15. Fixed truncation of last few bytes of the demuxed M2V file.
+      16. Fixed a problem that limited the number of files that could be opened
+      at once from the File Open Dialog (drag-and-drop to the DGIndex window
+      was OK). It should now be possible to open up to 512 files at once
+      via the open dialog.
+
+      --------------------------
+      DGMPGDec 1.4.5
+      Changes from version 1.4.4
+      --------------------------
+      1. Fixed major bug in random access when multiple elementary streams are loaded.
+
+      --------------------------
+      DGMPGDec 1.4.4
+      Changes from version 1.4.3
+      --------------------------
+      1. If a CLI D2V creation is invoked on a transport stream with the wrong pids
+      specified, when you enter the right PIDs, a bug caused an invalid filename
+      to be generated for the D2V file (".d2v"). This has been repaired.
+      2. Audio 48KHz -> 44.1KHz and Normalization have been fixed (they were
+      badly broken but Pre-Scale Decision was OK).
+      3. The __src__ AVS template macro was changed to __vid__ and an
+      __aud__ macro was added. Refer to the DGIndex manual for details.
+      4. The Audio menu options are enabled/grayed based on the selected audio
+      output method.
+      5. AVS script file generation was added to the DGIndex manual.
+      6. A complete and definitive account of the undocumented audio options was
+      added to the DGIndex user manual. I hope it may dispel some confusion and
+      misconceptions.
+      7. Fixed a bug that stopped AVS script creation when -EXIT was used in the CLI.
+      8. Added -MINIMIZE and -HIDE options to the CLI.
+      9. The DGIndex INI file is now always loaded from, and saved to, the same
+      directory that contains DGIndex.exe.
+      10. The error message for bad D2V opening has been broken into four to
+      make it easier to troubleshoot: D2V file is empty, DGIndex/DGDecode
+      mismatch, cannot open one of the source files listed in the D2V file, and
+      source stream has no sequence header.
+      11. Fixed an indexing bug in DGIndex that caused incorrect random frame
+      access in DGDecode in some rare cases.
+      12. Fixed a problem that caused stepping backward by GOP in DGIndex to fail
+      in some cases.
+      13. Added "m1v" to the open dialog "Files of type" string.
+      14. Increased from 100 to 500 the maximum number of PIDs that can be
+      displayed when performing Detect PIDs: Raw.
+      15. "Decode AC3 to WAV" was totally broken for tracks 2-8 (1 was OK). This
+      has been repaired.
+      16. A deficiency in the implementation of pulldown in DGDecode was repaired.
+      The result is that decoding is now resilient to changes of field order. This
+      makes Fix D2V superfluous, so it has been removed.
+      17. The right arrow key can now be used to single step in play/preview mode
+      if the playback speed is set to Single Step (previously just the right arrow button worked).
+      18. Colorimetry was reported incorrectly for MPEG2 in some cases. This has been fixed.
+      19. The HOME key was added as a synonym for the [ button, and the END button was
+      added as a synonym for the ] button.
+
+      --------------------------
+      DGMPGDec 1.4.3
+      Changes from version 1.4.2
+      --------------------------
+      1. Fixed a bug that caused the Force Film warning
+      to erroneously appear for MPEG1 files.
+      2. Fixed improper handling of the right arrow button.
+      3. Fixed broken Load Project functionality.
+
+      [DAG August 29, 2005]
+
+      --------------------------
+      DGMPGDec 1.4.2
+      Changes from version 1.4.1
+      --------------------------
+      1. A bug in processing of sequence end codes was repaired.
+
+      [DAG August 29, 2005]
+
+      --------------------------
+      DGMPGDec 1.4.1
+      Changes from version 1.4.0
+      --------------------------
+      1. DGDecode's fastMC option is enabled for 3dNow.
+      2. A scanning bug in reading the D2V file in DGDecode has been repaired.
+      3. The track specification for GUI and CLI has been changed to allow multiple
+      tracks to be enabled for demuxing. You can, for example, specify tracks 1
+      and 3 for demuxing. Previously, you could choose one track or all tracks.
+      4. Added the Skal and Simple IDCTs from DGDecode to DGIndex.
+      5. Added quant matrix logging.
+      6. Revised the video error handling to prevent macroblocking in some error
+      cases, and to prevent incorrect frame delivery leading to AV desync in some
+      error cases.
+      7. A default save file name is now set in the Save Project dialog.
+      8. The CLI now supports demuxing the video (-OFD).
+      9. Fixes for bugs in YV12 upsampling (tritical).
+      10. When repeat flags are present give Film/Video percentages instead of
+      FILM/NTSC percentages. This avoids showing a PAL as NTSC in some cases!
+      11. The command line buffer has been increased to 4096 bytes. If you use a
+      DOS shell instead of programmatic invocation, you will be limited by the
+      capability of the DOS shell.
+      12. Destroy the Info dialog window upon any of these events: new file(s)
+      opened, right/left arrow buttons hit, scroll operation on timeline.
+      13. Various changes/fixes for upsampling by tritical. These apply as
+      appropriate for DGDecode, DGIndex, and DGVfapi:
+
+      * upConv can now be set to 3 values: 0, 1, and 2. 0 = do nothing,
+      1 = YUY2 output, 2 = RGB24 output... for the case that the input is 4:2:2
+      then 1 is the same as 0.
+
+      * Added iCC parameter. iCC=true uses interlaced YV12->YUY2 upsampling,
+      iCC=false uses progressive YV12->YUY2 upsampling, and leaving iCC unset
+      makes it switch based on the progressive_frame flag.
+
+      * Fixed a little problem with the 422->444 conversion, fixed a problem with
+      the 444->RGB24 conversion where it wasn't correctly handling pixel values
+      that came out as &lt; 0, and added a faster isse 422->444 conversion. I also
+      modified the 444->RGB24 conversion so that it uses the correct coefficients
+      (indicated by the matrix_coefficients value).
+
+      * Added a way to force DGVfapi (and the DLL access functions) to follow
+      the progressive_frame flag.
+
+      * Added a Colorimetry box to the DGIndex Info dialog.
+      14. Top-level picture decoding (slice and macroblock layers) was completely
+      redesigned to dramatically improve resilience to video errors, and to correct
+      some spurious video errors due to bugs in the old approach. The previous
+      design is a legacy of the original MSSG reference decoder. The new design
+      was adapted from fccHandler's excellent VirtualDub MPEG2.
+      15. Modified the Info dialog display of video errors to show text reasons
+      instead of numbers.
+      16. Added "fccHandler" to the credits listing in the DGDecode manual.
+      17. Revised the playback speed option. It now gives 5 checkables: super
+      slow (5fps), slow (10fps), normal (plays reliably at the correct frame rate for
+      the stream), fast (2 times normal), maximum (as fast as possible).
+      18. A warning box is popped up if Force Film is used inappropriately. The user
+      can decide whether to proceed anyway or to cancel.
+      19. The leading number on the file path lines at the top of the file was
+      eliminated. This makes editing the D2V file to change paths easier. The D2V
+      file format version is therefore bumped to 11, and you will need to remake
+      existing projects.
+      20. Added an item to the Option menu: Force Open GOPs in D2V File. This
+      should be used when a stream erroneously claims that all its GOPs are closed.
+      21. Added a user manual for DGIndex! Thank you Cyberia.
+      22. Vob and Cell ID's are now displayed in the title bar.
+      23. Added a splash screen that is displayed when no file is loaded.
+      24. Added single-step mode to the playback speed options.
+
+      [DAG August 28, 2005]
+
+      --------------------------
+      DGMPGDec 1.4.0
+      Changes from version 1.3.0
+      --------------------------
+      1. Standard call wrappers for dgdecode.dll access functions for use by Visual Basic,
+      etc. E.g.: getRGBFrame_SC().
+      2. Fix for slice error recovery bug that caused some (rare) picture decoding errors.
+      3. Program streams with video stream IDs other than 0xE0 are now supported.
+      4. The preview info box of DGIndex now shows the audio type of all the audio tracks.
+      This is populated when doing a Preview (F5).
+      5. Fixed decoding errors due to improper recovery from corruption of transport streams.
+      6. Fixed the pitch=width assumption, thereby allowing proper operation under newer
+      versions of Avisynth that modify the alignment rules (revisions kindly contributed
+      by 'tritical').
+      7. Fixed the emulated header problem by properly parsing the pack or transport layer
+      when getting the initial sequence header.
+      8. Corrected an error in the D2V format document (bits 6 and 7 of the per-frame
+      flags byte was erroneously reversed).
+      9. The process priority can now be changed in DGIndex during a Save Project operation.
+      10. A bug in the PAT/PMT parser was repaired that could cause DGIndex to erroneously
+      think that a PAT/PMT is not present.
+      11. Added the .vro and .mpv file types to the DGIndex open dialog.
+      12. Fixed the Reference IDCT (type 4). Changes by jackei derived from his latest
+      DVD2AVI version.
+      13. MPEG1 is now supported.
+      14. DGVfapi now supports multiple instantiation, i.e., multiple "fake" AVIs served
+      at the same time. It can also open AVS scripts as well as D2V files. Thanks to
+      "tritical" for these enhancements.
+      15. DGParse and DGFix have been integrated into a new menu pulldown of DGIndex
+      called "Tools".
+      16. The integrated DGParse info now shows the GOP structure, and properly shows
+      the effect of the field operations.
+      17. Fixed a bug such that during preview the info dialog did not show the audio
+      track information for transport streams and PVA streams.
+      18. The Detect PIDs dialog now has a "Done" button.
+      19. Fixed a bug in parsing of transport streams.
+      20. Removed YV12toYUY2() and YV12toRGB24() as they duplicate Avisynth native filters.
+      21. In DGDecode.dll, replaced the buggy LumaFilter() with a new, optimized
+      LumaYV12() by ARDA.
+      22. Added a rudimentary playback speed control, for people with very fast machines
+      and who don't like watching their previews race by at 170 fps.
+      23. Added a new CLI parameter, -SD, which allows a custom delimiter character to be set.
+      24. "Process WAV" functionality was removed, and SRC/normalization can no longer be
+      applied to LPCM.
+      25. LPCM support was improved: 1) 48K/96K, 16bit/24/bit, and mono/stereo are now supported.
+      2) The format info is included in the filename and the info dialog. 3) Demux Track and
+      Demux All now work for LPCM (no special handling). Menus and info boxes were
+      updated appropriately.
+      26. The D2V format version is now checked when loading a D2V file.
+      27. IDCT support was fixed: 1) The IDCT algorithm specified in the INI or D2V file
+      is now not automatically promoted (e.g., previously if you had IDCT=1 in the INI file
+      and then started DGIndex, you'd end up with IDCT=3). However, the IDCT is scaled down
+      if it is not supported by the processor. 2) A bug in DGDecode was fixed that caused
+      SSEMMX to be used when SSE2MMX was requested. 3) The IDCT algorithm is now consistently
+      numbered between the CLI, D2V, etc.
+      28. Added audio processing to the Quick Start guide.
+      29. Fixed a problem that caused failure of AC3 audio demuxing from a transport stream
+      if the audio stream was not contained in the PAT/PMT tables.
+      30. Fixed a problem in DGVfapi that caused conversion of AVS scripts to fail when they
+      delivered RGB32. [fix by 'tritical']
+
+      [DAG July 11, 2005]
+
+      --------------------------
+      DGMPGDec 1.3.0
+      Changes from version 1.2.1
+      --------------------------
+      1. Added video demultiplexing to DGIndex.
+      2. Added exception handling to DGIndex and DGDecode to prevent
+      brutal crashing on an incomplete picture and other MPEG2 errors.
+      3. Changed method of VFAPI upsampling control. Now it defaults to
+      interlaced but can be forced to progressive by putting "_P" just
+      before the extension of the D2V filename, e.g., movie_P.d2v.
+      4. The file list buffer was increased for DGIndex to prevent crashing
+      when many VOB files are selected at once.
+      5. Reduced delay on Save Project for transport streams when no PAT/PMT
+      is present.
+      6. In DGIndex, ESC now exits CLI mode.
+      7. Fixed crashing with AVS template handling in CLI mode.
+      8. Fixed a bug in PAT/PMT parsing that caused it to miss some programs in
+      some cases.
+      9. Revised DGIndex's AVS template syntax to allow for more than one occurrence
+      of the D2V filename in the script.
+
+      [DAG May 1, 2005]
+
+      --------------------------
+      DGMPGDec 1.2.1
+      Changes from version 1.2.0
+      --------------------------
+      1. Fixed crashing bug in BlindPP().
+      2. Fixed incorrect DGDecode postprocessing for YUY2.
+      3. Changed DGDecode to deliver YV12 by default. For I420, use
+         DGDecode(...,i420=true). This fixes interoperability with some
+         applications, such as mencoder.
+      4. Fixed erroneous audio delays for multiple tracks.
+      5. Added i420 parameter to DGDecode help file, and added an Appendix
+         on BlindPP() usage.
+      6. Added Deblock() blind H.264 deblocking filter, by "Manao", because
+         some people prefer it to BlindPP().
+
+      [DAG Feb 19, 2005]
+
+      ---------------------------------------------------------
+      DGMPGDec Version 1.2.0 Functional Changes
+      (versus DGMPGDec 1.1.0)
+      ---------------------------------------------------------
+      1. Added demuxing of AAC audio from transport streams.
+      2. Added preliminary support for PVA streams.
+      3. Fixed crash with long GOPs.
+      4. Fixed error tolerance on stream video errors.
+      5. Fixed problem with indexing for some selection operations.
+      6. Further improvements to the Info dialog.
+      7. Fixed DGIndex delay calculation for selections.
+      8. Revised "info" parameter as follows:
+
+        0: Do not generate debug information
+        1: Overlay debug information on the video
+        2: Output debug information via OutputDebugString() (Use DebugView utility)
+        3: Output hints in the video (as defined in utilities.cpp/utilities.h)
+              Current hints are progressive/interlaced and colorimetry.
+      9. D2V file revised to version 8 format. It now carries more per GOP and
+      per frame data. Refer to the D2V file format document for details.
+      10. Fixed a problem that caused field structure clips to fail randomly
+      (sometimes they worked and sometimes they didn't).
+      11. Fixed lots of bugs in the Info display and made it correct for
+      random navigation (key data is indexed in the D2V file now, so DGDecode
+      doesn't have to try to figure it out).
+      12. Fixed bug in the de-ringing postprocessing.
+      13. Fixed crashing problem with BlindPP() for YUY2 input.
+      14. Changed DGIndex so it reports any calculated audio delay, no matter how wild
+      it may seem to be.
+
+      [Donald Graft, February 17, 2005]
+
+      ---------------------------------------------------------
+      DGMPGDec Version 1.1.0 Functional Changes
+      (versus DGMPGDec 1.0.13)
+      ---------------------------------------------------------
+      1. A new CLI option for loading input files from a file list contained in a text file
+      was added as follows:
+
+      -Batch-Files               -BF       ([filelist]) Load batch of files.
+                                           The filelist file contains the list of files to load,
+                                           one file per line with no extra white space.
+      2. Previous fixes for stopping crashes when some corrupted files are
+      loaded broke proper decoding of files with a single I frame (stills), and
+      files with just a few frames. Those changes were backed out because it
+      is more important to get normal decoding of correct files working properly.
+      Nevertheless, I still want to properly address the crashing issue for
+      corrupt and truncated files, so please notify me if you run into
+      streams that cause DGDecode to crash at the end of a file. The current
+      workaround is to remove the last frame entry in the D2V file. My tests
+      all pass for stills and few-frame files with this change. Please notify me
+      if you experience any problems in that regard.
+      3. Some transport files were not being properly decoded due to a missing
+      check in the transport parser. This is repaired.
+      4. When quantizer matrix changes occur in a stream, random access would fail
+      in some cases, producing a corrupted frame. This has been repaired with the caveat
+      that any file that changes quantizer matrices on the fly must send a sequence
+      header with every GOP. I have never seen any file that does not do this. Please
+      notify me if you find one (i.e., one that does not have a sequence header for
+      every GOP *and* changes quantizer matrices).
+      5. When processing a transport file with the video PID erroneously set to an
+      audio stream, DGIndex would declare that the file is not a transport stream
+      when trying to detect PIDs, and decoding would fail. This has been repaired.
+      Now a warning box pops up and advises the user to check his PIDs.
+      6. Fixed a bug in auto-loading from the CLI.
+      7. Added automatic detection of transport streams. Transport stream files can
+      now have any file extension.
+      8. The DC mode decision of postprocess deblocking was broken both horizontally
+      and vertically. It has been shown to produce objectionable artifacts.
+      This was repaired by correcting the decision code. (by "tritical")
+      9. Revised the file open method for the GUI (the CLI remains as before for
+      backward compatibility). Now, the open file dialog allows multiple selection.
+      The file names are automatically sorted in an intelligent way. Some further
+      enhancements may be needed, but I think this is moving in the right direction.
+      10. Added horizontal scrollbar to video list box.
+      11. Added "move up" and "move down" buttons to the video list box.
+      12. For the CLI: If -Exit is specified, DGIndex will exit on failure
+      to write the -OF specified D2V file. If it is not specified, then DGIndex
+      remains open, an error box pops up, and DGIndex reverts to normal non-CLI
+      operation to allow the user to save the D2V elsewhere.
+      13. At the end of a save D2v, preview, or play, a message box is no longer
+      popped up and the trackbar is not returned to the start.
+      14. Transport PIDs are now defaulted to 0x02 to prevent decoding a wrong stream
+      before the PIDs are set. But because PIDs are retained in the INI file, problems
+      can still arise. Please refer to the Transport Stream Notes file.
+      15. Added missing PID in filename for AC3 files demuxed from transport streams.
+      16. Corrected the audio delay calculation for transport files.
+      17. Removed icons from the title bar of popup message boxes.
+      18. Added more bullet-proofing for erroneously loading non-MPEG2 files.
+      19. The default directory for Save Project is now the same as the directory
+      from which the input file(s) was loaded. This works for both Open through the
+      menus and drag-and-drop.
+      20. Added the following fields to the Info display in DGIndex: picture size,
+      MPEG2 profile/level, picture coding structure, i.e., field or frame picture.
+      21. Fixed hang when doing Preview/Play/Save Project without a valid video PID.
+      22. Fixed hang when the audio PID is set before the video PID.
+      23. Incorporated tritical's changes to DGDecode as follows:
+
+      A) added info option to mpeg2source() to display info on frames
+            - example usage:  mpeg2source(info=true)
+
+      B) iPP is a bool again.  If it is not explicitly set to true or false then it
+             defaults to auto which switches between field/frame based pp based on the
+             progressive_frame flag
+
+      C) 4:2:2 input support
+            - can now correctly decode 4:2:2 input sources and correctly output it
+                 to AviSynth as YUY2
+
+            *NOTE:  mpeg2source() now throws an error on 4:4:4 input, it could handle it
+                     but AviSynth 2.5 does not have internal YUV 4:4:4 support
+
+            - 4:2:2 PLANAR post-processing support
+
+      D) Upsampling to 4:2:2 from 4:2:0 based on progressive_frame flag.  Uses new
+             upConv parameter of mpeg2source().
+
+            - example   mpeg2source(upConv=true)
+
+            *NOTES:  it will only work if input is 4:2:0, if input is anything else
+                      then the upConv parameter is ignored
+
+      E) BlindPP now supports YUY2 colorspace
+
+      F) other stuff:
+
+            - fixed blindPP syntax bug  (x and X)
+            - fixed a small bug with showQ option
+            - fixed small memory leak with FrameList/GOPList not being free'd
+            - fixed a bug in the vertical chroma deblocking postprocessing
+                    QP pointer being passed was incorrect for 4:2:0
+            - faster mmx 4:2:2 to packed YUY2 and YUY2 to planar 4:2:2 conversions
+            - info output would not work correctly if temporal_reference was not zero
+              based at the beginning of gops, it does now
+
+
+      [Donald Graft, January 15, 2005]
+
+      ---------------------------------------------------------
+      DGMPGDec Version 1.0.13 Functional Changes
+      (versus DVD2AVIdg/MPEG2DEC3dg 1.3.0)
+      ---------------------------------------------------------
+      1. Recast everything with the new DGMPGDec naming scheme
+      (DGIndex, DGDecode, DGVfapi, DGFix, DGParse, DGTable).
+      2. Destroy Info dialog after user dismisses the "finished" popup.
+      3. Added auto AVS file generation. Refer to the Quick Start guide
+      for details.
+      4. Fixed DGVfapi.vfp so that it doesn't crash when called with
+      a file that is not a D2V file (TMPGEnc does this).
+      5. Fixed the IDCT selection to not be global in DGDecode.
+      6. Wrote a quick start guide.
+      7. Removed the Open DVD menu item and support.
+      8. Removed the Swap Field Order option because it was not functional
+      and doesn't really belong here. Also, since it was mutually exclusive
+      with the other field order options, it didn't make much sense to begin
+      with. Use Simon Walters' Reverse Field Dominance filter in your AVS script
+      if you need to reverse the field dominance.
+      9. Added an acknowledgement to jackei in the About box.
+      10. Fixed some bugs in audio timestamp display and delay calculations.
+      11. Added demuxing of MPEG audio (*.mpa) for transport streams. Note that if your
+      stream does not contain proper PAT/PMT tables to allow DGIndex to determine
+      the audio type on your specified audio PID, then only MPEG audio will be
+      tried. This may change to allow manual specification when auto detection
+      fails.
+      12. Fixed transport stream handling to properly decode video stream IDs
+      0xe8 through 0xef.
+      13. Added capability to extract audio from audio only transport streams.
+      14. Added document giving notes on the transport stream support.
+      15. Fixed DGDecode so that it (hopefully) no longer crashes VirtualDub on exit
+      when the last frame is incomplete.
+      16. Added raw PID detection. It identifies audio and video PIDs but does not
+      show which audio goes with which video when there are multiple programs. This is
+      useful when full PAT/PMT tables are not present.
+      17. Changed CLI to set transport parsing based on the extension type.
+      18. Added a new CLI option to read a file that lists the files to be loaded.
+    </releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>
