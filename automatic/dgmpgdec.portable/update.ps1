@@ -17,7 +17,7 @@ function global:au_SearchReplace {
             "(^[$]url\s*=\s*)('.*')"        = "`$1'$($Latest.URL32)'"
             "(^[$]checksum\s*=\s*)('.*')"   = "`$1'$($Latest.Checksum32)'"
         }
-     }
- }
- 
+    }
+}
+
 update -ChecksumFor all -NoCheckUrl
