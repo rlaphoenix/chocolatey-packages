@@ -27,3 +27,6 @@ Install-ChocolateyFileAssociation ".d2v" $dgIndexPath
 
 $startDir = "$Env:ProgramData\Microsoft\Windows\Start Menu\Programs\DGIndex.lnk"
 Install-ChocolateyShortcut -ShortcutFilePath $startDir -TargetPath $dgIndexPath
+
+$bin = "$env:ChocolateyInstall\lib\dgmpgdec.portable\tools\"
+Install-ChocolateyPath -PathToInstall $bin -PathType 'Machine'
