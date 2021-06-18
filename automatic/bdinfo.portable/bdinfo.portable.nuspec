@@ -94,7 +94,7 @@
       v0.7.5.1
 
       fix parsing of discs which do not contain 'Meta' folder
-      remember window size & location
+      remember window size &amp; location
       display chapter count in playlist view (can be enabled/disabled in settings, default off)
 
 
