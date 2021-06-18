@@ -1,0 +1,361 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>bdinfo.portable</id>
+    <version>0.7.5.6</version>
+    <packageSourceUrl>https://github.com/rlaphoenix/chocolatey-packages</packageSourceUrl>
+    <owners>rlaphoenix</owners>
+    <title>BDInfo (Portable)</title>
+    <authors>CinemaSquid, Juergen Tem</authors>
+    <projectUrl>https://github.com/UniqProject/BDInfo</projectUrl>
+    <iconUrl>https://rawcdn.githack.com/rlaphoenix/chocolatey-packages/f09a802c7b6da16e7a616cea920cb67ac6ffc766/icons/bdinfo.portable.png</iconUrl>
+    <copyright>2021 CinemaSquid, Juergen Tem</copyright>
+    <licenseUrl>https://github.com/UniqProject/BDInfo/blob/UHD_Support/license.txt</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/UniqProject/BDInfo</projectSourceUrl>
+    <docsUrl>https://github.com/UniqProject/BDInfo/blob/UHD_Support/README.md</docsUrl>
+    <bugTrackerUrl>https://github.com/UniqProject/BDInfo/issues</bugTrackerUrl>
+    <tags>bluray bd mediainfo avc hevc</tags>
+    <summary>Bluray video and audio technical specs information recorder.</summary>
+    <description>
+      This specific version is by UniqProject (Juergen Tem), the original is by late cinemasquid.com.
+      The BDInfo tool was designed to collect video and audio technical specifications from Blu-ray movie discs, including:
+
+      - Disc Size
+      - Playlist File Contents
+      - Stream Codec and Bitrate Details
+
+      ## Requirements
+
+      - Windows 7 or higher Operating System
+      - Blu-ray BD-ROM Drive
+      - .NET Framework 4.7.2 or Higher
+      - Source Code
+
+      The BDInfo source code is licensed under the LGPL 2.1.
+      The free tool Microsoft Visual C# 2010 Express can be used to build the source code.
+
+      ## Known Issues
+
+      Occasionally inaccurate bit-depth measurement on Dolby TrueHD and DTS-HD Master audio streams.
+      BDInfo will NOT function correctly with copy-protected discs. You will have to decrypt commercial Blu-ray movie
+      discs before you will be able to gather any info.
+    </description>
+    <releaseNotes>
+      0.7.5.8-beta
+
+      Changes since v0.7.5.7-beta
+
+      Make stream detection more reliable; Trying to work around mastering problems, where a playlist can reference multiple stream files with different stream types for same ID
+      Changes since v0.7.5.6
+
+      Fix file filter in the ISO selection dialog (regression from previous version)
+      Fix file size column naming in the playlist window
+      Make AVC and HEVC stream parsing more reliable by respecting the emulation prevention bytes
+
+
+      v0.7.5.7-beta
+
+      Fix file filter in the ISO selection dialog (regression from previous version)
+      Fix file size column naming in the playlist window
+      Make AVC and HEVC stream parsing more reliable by respecting the emulation prevention bytes
+
+
+      v0.7.5.6
+
+      On non-3D BDs do not report 'Left/Right Eye' on video streams when multiple video streams available
+      Fix High-DPI support.
+      Add a new setting to switch between human readable and raw byte formatted file sizes in the playlist/stream view
+      Add support for HDR10+ (@stanionascu)
+
+
+      v0.7.5.5
+
+      Remember last window state on closing the application
+      Fixed reporting of DD+ core track stream type
+      Fixed DialNorm reporting on DD/DD+ streams
+
+
+      v0.7.5.4
+
+      Fix 3D BD Bitrate scanning
+
+
+      v0.7.5.3
+
+      Fix individual playlist scan if "Display chapter count" is enabled in the options
+
+
+      v0.7.5.2
+
+      fixed weird resizing behavior of main window. After minimizing and restoring from taskbar the window should have correct size again
+
+
+      v0.7.5.1
+
+      fix parsing of discs which do not contain 'Meta' folder
+      remember window size & location
+      display chapter count in playlist view (can be enabled/disabled in settings, default off)
+
+
+      v0.7.5
+
+      Read and display disc title from metadata if disc contains any
+      Added support for lossy DTS:X streams (based on DTS-HD High-Res Audio)
+      Fix alternative stream format names (which are used in reports)
+
+
+      v0.7.4
+
+      Implemented HEVC bitstream parsing (Code based on MediaInfo)
+      Implemented functionality to copy full playlist or stream file path to the clipboard using CTRL+C, depending on which list is focused
+      Made stream detail reporting configurable
+      Changed the way how TrueHD bitrate is reported
+      Fixed bitstream parsing for audio streams with very high bitrate
+      Fixed number formatting. It does not rely on system culture/language settings anymore.
+
+
+      v0.7.4-beta
+
+      Change the way how TrueHD bitrate is reported
+      Fix bitstream parsing for audio streams with very high bitrate
+      Implement HEVC bitstream parsing (Code based on MediaInfo
+
+
+      v0.7.3.3
+
+      Fix reading DD+ streams without extended bitstream info.
+      Fix parsing of TrueHD/Atmos streams where the embedded core track could not be detected sometimes.
+
+
+      v0.7.3.2
+
+      Fix reading of already mounted ISO images
+      Fix reading of DTS-HD streams without extended Metadata
+      Re-enable ISO button after previous read has failed
+
+
+      v0.7.3.1
+
+      Fixed reported disc size with 3D-ISO images
+
+
+      v0.7.3
+
+      Fixed parsing of Dolby Digital Plus streams with more than 6 (5.1) channels
+      Added detection of Dolby Atmos metadata in DD+ streams
+      Added detection of DTS:X metadata
+
+
+      0.7.2
+
+      Add ISO Support
+
+
+      v0.7.1
+
+      Dolby Atmos support
+      Display left/right eye video stream information in 3D-BD playlists
+
+      v0.7
+
+      UHD Bluray support.
+      HEVC stream detection.
+
+
+      Version 0.5.10 by git4kUHD
+
+      I built an updated version for BDInfo that supports UHD playlists.
+      Requires .NET Framework 4.5.
+
+
+      Version 0.5.9 by robena
+
+      I made a small update to BDInfo 0.5.8, replacing the old XP style Browse dialog with the new Vista one.
+
+
+      2011-12-08: Version 0.5.8
+
+      Blu-ray 3D SSIF scanning fixes (ex. [UK] The Hole 3D).
+      Blu-ray scanning fixes for certain titles with playlists containing multiple M2TS (ex. [US] Enter the Void).
+      The settings "Keep original stream ordering" and "Enable SSIF scanning" are now enabled by default.
+      Added "50Hz Content" indicator to the main window and report when a disc contains any playlists with 1080i50 or 576i50 video.
+      Added milliseconds display for the Playlist Length field in the report.
+      Added drag-and-drop folder/file support from Explorer and the main program window.
+      Browse button will now start the folder browser in the location specified by the "Select the Source BD-ROM" textbox.
+      Fixed bug with empty custom playlists.
+      Upgraded source code solution to Visual Studio 2010.
+
+
+      20XX-XX-XX: Version 0.5.7 (Not officially released)
+
+      Blu-ray 3D SSIF scanning fixes.
+
+
+      2010-09-08: Version 0.5.6
+
+      * Fixed problem introduced in v0.5.5 with incorrect bitrate charts and chapter peak/average measurements for BonusView titles.
+      * Changed playlist scanner back to using M2TS instead of SSIF by default due to problems with certain Blu-ray 3D discs.
+      * Added option to scan SSIF instead of M2TS to settings.
+      * Added additional debug logging to report when file scanning errors are encountered.
+
+
+      2010-08-29: Version 0.5.5
+
+      * Added video bitrate analysis and charts for MPEG-4 MVC streams on Blu-ray 3D discs.
+      * Changed calculation of disc size to exclude SSIF files for Blu-ray 3D discs.
+      * Changed calculation of playlist size to include interleaved companion files for Blu-ray 3D discs.
+      * Changed playlist scanner to use SSIF instead of M2TS for Blu-ray 3D discs.
+      * Changed startup and full scans to skip unreferenced M2TS.
+
+
+      2010-05-22: Version 0.5.4
+
+      * Added detection and reporting of PSP Digital Copies and Blu-ray 3D.
+      * Added separate reporting of VC-1 BI-frames, instead of grouping them with B-frames.
+      * Added ability to create custom playlists from "incompatible" files.
+      * Fixed volume label detection problem when scanning a folder rather than a disc.
+      * Fixed incorrect reporting of audio codecs on certain multi-file playlists.
+      * Fixed problem with autogenerated reports being written to the wrong directory.
+      * Fixed problem with reporting of negative peak times for small files.
+
+
+      2009-10-11: Version 0.5.3
+
+      * BDInfo source code given an LGPL 2.1 license.
+      * Added marking of "hidden" tracks - i.e. streams which are present in the underlying CLPI/M2TS, but absent in a given MPLS.
+      * Added grouping display and sorting for playlists that share M2TS.
+      * Added ability to multi-select M2TS when creating custom playlists.
+      * Added display of DialNorm values (offset from -31dB reference) for AC3 and DTS audio tracks.
+      * Added detection of D-Box Motion Code presence.
+      * Changed handling of copy-protected and damaged discs to hopefully display better error messages.
+      * Changed option to hide "invalid" playlists into separate options for hiding looping playlists and playlists under a configurable runtime length.
+      * Changed detailed report display for multi-angle playlists to display more information.
+      * Fixed bug that prevented all streams from being displayed sometimes in custom playlists.
+
+
+      2008-01-18: Version 0.5.2
+
+      * Fixed bug that prevented detection of BD+ with newer revisions of AnyDVD HD.
+      * Fixed bug that prevented proper stream identification for certain playlists.
+      * Added setting to preserve original stream ordering.
+      * Added quick playlist summary output to the text report.
+      * Added "rescan" button to refresh disc contents from last folder scanned.
+      * Added feature to remember the last folder scanned between BDInfo sessions.
+      * Added default filename to chart image save screen.
+
+
+      2008-12-01: Version 0.5.1
+
+      * Added BDInfo version number to text report output.
+      * Fixed bug that prevented report display for certain playlists.
+      * Fixed bug that prevented full bitrate scan of certain playlists.
+      * Fixed bug that caused reporting problems when a playlist contains streams of different types with the same PID.
+      * Fixed detection of CBR for "open" bitrate DTS audio tracks.
+      * Fixed channel count detection for 6.1 DTS-ES tracks.
+      * Changed constant bitrate display of 1536 kbps DTS tracks to a more technically accurate 1509 kbps.
+      * Changed text report to only display stream diagnostics once for each M2TS in a given playlist.
+
+
+      2008-11-18: Version 0.5.0
+
+      * Source code published.
+      * Added detection of channel layout, bit depth and sample rate for DTS-HD High-Resolution and Master Audio tracks.
+      * Added immediate display of constant bitrates after the initial startup disc scan for DTS-HD and DTS Express constant bitrate tracks.
+      * Added display of alternate angle M2TS files and video information for multi-angle playlists.
+      * Added detection of Dolby Surround for AC3 2.0 audio tracks.
+      * Added ability to generate charts for secondary video tracks.
+      * Added ability to generate custom playlists for reporting purposes.
+      * Added "Measured Bytes" tracking display to MPLS playlist and M2TS stream file lists.
+      * Changed UI layout including resizeable main window.
+      * Changed chart X-axis timescales from seconds to minutes.
+      * Changed layout of frame type charts to fix text overlap problems.
+      * Fixed support for MPLS playlist files that reference only part of an M2TS.
+      * Fixed bug in subtitle and chapter average video bitrate calculations.
+      * Fixed bug in frame type count and size charts that excluded final video frame.
+      * Removed display of VC-1 BI-frames from frame type charts - these are now counted as B-frames.
+      * Removed CSV export frame dump option.
+
+
+      2008-08-04: Version 0.4.1
+
+      * Added frame type (e.g. I/P/B) to CSV export frame dump.
+      * Added two new charts to show frame type counts and avg/max sizes.
+      * Added option to display all playlists (i.e. disable automatic "invalid" playlist filtering).
+      * Added display of volume label (for disc images) to report.
+      * Added display of codec and language name to stream diagnostics report section.
+      * Added summary section to end of output report.
+      * Changed default autosave names to include volume label.
+      * Changed subtitle bitrate precision to three significant digits in report.
+      * Changed default graph image export option to PNG.
+      * Changed codec name of secondary DTS-HD PiP audio tracks to "DTS Express".
+      * Changed behavior of chapter processing to combine final chapters of length less than two seconds into the stats of the next to last chapter.
+      * Fixed bug in playlist processing of Blu-ray folder output produced by TSRemux.
+      * Fixed bug that occasionally prevented the report from being displayed.
+
+
+      2008-07-25: Version 0.4.0
+
+      * Added display of basic video aspect ratio (4:3 and 16:9).
+      * Added display of video codec profile for AVC and VC-1.
+      * Added warning message if copy protection or disc corruption errors are encountered during the initial scan.
+      * Added new settings screen to store program options between sessions.
+      * Added option to write out measured frame data to a comma-separated-value (.CSV) file.
+      * Added option to autosave report upon bitrate scan completion.
+      * Added new report fields including per-chapter video bitrate averages as well as peak bitrate values and locations.
+      * Added bitrate display charts for viewing video bitrate and frame sizes over time.
+
+
+      2008-07-01: Version 0.3.1
+
+      * Fixed bug in initial disc scan that occasionally prevented correct display of audio header information (i.e. channel count, sampling rate).
+      * Fixed bug that caused BD+ and BD-Java to be mistakenly flagged on the next disc when performing multiple scans in a row.
+
+
+      2008-06-30: Version 0.3.0
+
+      * Fixed bug in processing of playlist files that prevented Profile 1.1 Bonus View video tracks and some audio/subtitle tracks from being displayed.
+      * Added detection of DTS-HD Master Audio 96kHz sampling rates, but 7.1 channel counts are still not detected.
+      * Added chapter marker list to output report.
+      * Some minor performance improvements to the initial disc scan.
+
+
+      2008-06-28: Version 0.2.3
+
+      * Fixed overestimation of TrueHD and DTS-HD variable audio bitrates.
+      * TrueHD core track bitrate is now subtracted from the reported TrueHD bitrate.
+      * Added BD+ and BD-Java detection to report.
+      * Added stream diagnostics option to report to show stream byte and packet counts.
+      * Fixed bug with cancel followed by a rescan of the same playlist.
+
+
+      2008-05-30: Version 0.2.2
+
+      * Fixed another bug in processing of certain playlist files.
+      * Fixed bug in detection of Dolby TrueHD audio channel layout.
+
+
+      2008-05-21: Version 0.2.1
+
+      * Fixed bug in processing of certain playlist files that contain multi-angle information.
+
+
+      2008-05-12: Version 0.2.0
+
+      * Changed language display to show name of language rather than ISO 639-2 three-character language code.
+      * Changed estimation of Dolby TrueHD audio bit depth to be more accurate (although still a guess).
+      * Changed forum report audio bitrate for multi-file playlists to reflect averaged bitrate across all playlist files.
+      * Changed time in / time out file display in report to reflect playlist relative times rather than file relative times.
+      * Fixed bug in processing of certain playlist files that contain multi-angle information.
+      * Added playlist filter to remove assumed "garbage" playlists from display.
+
+
+      2008-04-28: Version 0.1.0
+
+      * Initial Release.
+    </releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>
