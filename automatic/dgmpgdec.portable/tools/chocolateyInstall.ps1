@@ -1,6 +1,6 @@
 ﻿$ErrorActionPreference = 'Stop';
 $softwareName = 'DGMPGDec'
-$toolsDir     = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
+$toolsDir     = "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)"
 $url          = 'http://rationalqm.us/dgmpgdec/dgmpgdec2005.zip'
 $checksum     = 'CB8F58F1CC88501512868BCDED6F4D4070EEEB7F5145EFA9045F0BB2BCD3904E'
 
@@ -28,5 +28,4 @@ Install-ChocolateyFileAssociation ".d2v" $dgIndexPath
 $startDir = "$Env:ProgramData\Microsoft\Windows\Start Menu\Programs\DGIndex.lnk"
 Install-ChocolateyShortcut -ShortcutFilePath $startDir -TargetPath $dgIndexPath
 
-$bin = "$env:ChocolateyInstall\lib\dgmpgdec.portable\tools\"
-Install-ChocolateyPath -PathToInstall $bin -PathType 'Machine'
+Install-ChocolateyPath -PathToInstall $toolsDir -PathType "Machine"
