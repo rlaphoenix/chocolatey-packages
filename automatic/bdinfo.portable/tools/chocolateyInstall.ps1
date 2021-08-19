@@ -26,5 +26,4 @@ $bdInfoPath = "$($libDir)\tools\BDInfo.exe"
 $startDir = "$Env:ProgramData\Microsoft\Windows\Start Menu\Programs\BDInfo.lnk"
 Install-ChocolateyShortcut -ShortcutFilePath $startDir -TargetPath $bdInfoPath
 
-$bin = "$env:ChocolateyInstall\lib\bdinfo.portable\tools\"
-Install-ChocolateyPath -PathToInstall $bin -PathType 'Machine'
+Install-ChocolateyPath -PathToInstall $toolsDir -PathType 'Machine'
