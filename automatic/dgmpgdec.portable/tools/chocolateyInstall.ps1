@@ -20,7 +20,7 @@ $packageArgs = @{
 
 Install-ChocolateyZipPackage @packageArgs
 
-$libDir = (Get-ChildItem $env:ALLUSERSPROFILE\chocolatey\lib\dgmpgdec* | select $_.last)
+$libDir = (Get-ChildItem $env:ALLUSERSPROFILE\chocolatey\lib\dgmpgdec* | Select-Object $_.last)
 $dgIndexPath = "$($libDir)\tools\DGIndex.exe"
 
 Install-ChocolateyFileAssociation ".d2v" $dgIndexPath
