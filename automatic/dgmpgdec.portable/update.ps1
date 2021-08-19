@@ -5,8 +5,8 @@ $releases = 'http://rationalqm.us/dgmpgdec/'
 function global:au_GetLatest {
     $download_page = Invoke-WebRequest -Uri $releases -UseBasicParsing
     $regex   = 'dgmpgdec(\d{4}).zip$'
-    $url     = $download_page.links | ? href -match $regex | select -First 1 -expand href
-    $version = $url | Select-String -pattern $regex | % {$_.matches.groups[1].value}
+    $url     = $download_page.links | Where-Object href -match $regex | Select-Object -First 1 -expand href
+    $version = $url | Select-String -pattern $regex | ForEach-Object {$_.matches.groups[1].value}
     $version = $version.ToCharArray() -join "."
     return @{ Version = $version; URL32 = $url }
 }
