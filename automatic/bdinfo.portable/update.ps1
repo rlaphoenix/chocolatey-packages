@@ -10,7 +10,7 @@ function global:au_GetLatest {
                 Where-Object {$_.draft -ne "True"} | 
                 Select-Object -First 1
 
-    $version = ($latest | Select -ExpandProperty tag_name) -replace "v",""
+    $version = ($latest | Select-Object -ExpandProperty tag_name) -replace "v",""
     $url = $latest | 
                Select-Object -ExpandProperty assets | 
                Where-Object {$_.content_type -eq "application/x-zip-compressed"} | 

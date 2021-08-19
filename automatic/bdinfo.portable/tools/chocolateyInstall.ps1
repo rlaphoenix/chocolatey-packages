@@ -20,7 +20,7 @@ $packageArgs = @{
 
 Install-ChocolateyZipPackage @packageArgs
 
-$libDir = (Get-ChildItem $env:ALLUSERSPROFILE\chocolatey\lib\bdinfo* | select $_.last)
+$libDir = (Get-ChildItem $env:ALLUSERSPROFILE\chocolatey\lib\bdinfo* | Select-Object $_.last)
 $bdInfoPath = "$($libDir)\tools\BDInfo.exe"
 
 $startDir = "$Env:ProgramData\Microsoft\Windows\Start Menu\Programs\BDInfo.lnk"
