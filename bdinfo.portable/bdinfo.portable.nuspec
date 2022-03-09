@@ -8,7 +8,7 @@
     <title>BDInfo (Portable)</title>
     <authors>CinemaSquid, Juergen Tem</authors>
     <projectUrl>https://github.com/UniqProject/BDInfo</projectUrl>
-    <iconUrl>https://rawcdn.githack.com/rlaphoenix/chocolatey-packages/f09a802c7b6da16e7a616cea920cb67ac6ffc766/icons/bdinfo.portable.png</iconUrl>
+    <iconUrl>https://rawcdn.githack.com/rlaphoenix/chocolatey-packages/669c5fd663c8eabb0d48a882138134ed699abdd8/bdinfo.portable/icon.png</iconUrl>
     <copyright>2021 CinemaSquid, Juergen Tem</copyright>
     <licenseUrl>https://github.com/UniqProject/BDInfo/blob/UHD_Support/license.txt</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
