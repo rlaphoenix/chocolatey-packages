@@ -1,8 +1,8 @@
 ﻿$ErrorActionPreference = 'Stop';
 $softwareName = 'DGMPGDec'
 $toolsDir     = "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)"
-$url          = 'http://rationalqm.us/dgmpgdec/dgmpgdec2005.zip'
-$checksum     = 'CB8F58F1CC88501512868BCDED6F4D4070EEEB7F5145EFA9045F0BB2BCD3904E'
+$url          = 'https://rationalqm.us/dgmpgdec/dgmpgdec2006.zip'
+$checksum     = '100D38AA0ECC58F3340B8ED26022B83F5F83643FD74D70FC35CDAE30B0B98FA4'
 
 $packageArgs = @{
   packageName   = $env:ChocolateyPackageName
